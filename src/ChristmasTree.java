@@ -5,12 +5,14 @@
  *    
  ******************************************************************************/
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MoveAction;
+
 import org.jointheleague.graphical.robot.Robot;
 
 
 public class ChristmasTree {
 
-	Robot rob  = new Robot();
+	Robot moon  = new Robot();
 	
     public static void main(String[] args) {
         ChristmasTree ohChristmasTree = new ChristmasTree();
@@ -29,28 +31,34 @@ public class ChristmasTree {
 
 
         // 1. Make a variable for turnAmount and set it to 175
-
-
+    	
+    	int turnamount = 175;
+    	moon.move((int) treeWidth);
+    	
         // 2. Start the Robot facing to the right
-
-
+moon.setAngle(90);
+    	
+    	
         // 5. Repeat steps 3 through 11, 11 times
+for (int i = 0; i < 11; i++) {
+	
 
 
             // 3. Move the robot the width of the tree
-    
+    moon.move(15);
             // 4. Turn the robot the current turnAmount to the right
-    
+    moon.turn(turnamount);
             // 6. Set the treeWidth to the current treeWidth times the scale
-    
+    treeWidth = treeWidth * scale;
             // 7. Move the robot the width of a tree again
-    
+    moon.move((int) treeWidth);
             // 9. Turn the robot the current turn amount to the LEFT
-    
+    moon.turn(-turnamount);
             // 10. Set the treeWidth to the current treeWidth times the scale again
-    
+    treeWidth = treeWidth * scale;
             // 11. Decrease turnAmount by 1
-
+    moon.turn(turnamount--);
+	}
 
 }
     
@@ -74,7 +82,15 @@ public class ChristmasTree {
     
     void drawStar() {
         // * Optional: Draw a red star on top of the tree. Hint: 144 degrees makes a star.
+    moon.miniaturize();
+    moon.setSpeed(1000000000);
+    moon.penDown();
+    moon.setPenColor(0, 255, 255);
+    for (int i = 0; i < 5; i++) {
+    moon.move(90); 
+    moon.turn(144);
     
+    }
     }
 
 
